@@ -1,0 +1,51 @@
+#include <stdio.h>
+ int main(){
+    int q;
+    scanf("%d", &q);
+    
+    while(q--){
+        int n, k;
+        scanf("%d %d", &n, &k);
+        
+        int A[1000], B[1000];
+       //read A 
+        for(int i=0; i<n; i++){
+            scanf("%d", &A[i]);
+        }
+        //read b
+        for(int i=0; i<n; i++){
+            scanf("%d", &B[i]);
+        }
+        //sort a in ascending order
+        for(int i=0; i< n-1; i++){
+            for(int j=i+1; j<n; j++){
+                if(A[i]>A[j]){
+                    int temp =A[i];
+                    A[i]=A[j];
+                    A[j]=temp;
+                }
+    }
+        }
+        for(int i=0; i<n-1; i++){
+            for(int j=i+1; j<n; j++){
+                if(B[i]<B[j]){
+                    int temp =B[i];
+                    B[i]=B[j];
+                    B[j]=temp;
+                }
+    }
+        }
+    int possible=1;
+    for(int i=0; i<n;i++){
+        if (A[i]+B[i]<k){
+            possible =0;
+            break;
+        }
+    }
+    if(possible)
+    printf("YES\n");
+    else 
+    printf("NO\n");
+    }
+    return 0;
+ }

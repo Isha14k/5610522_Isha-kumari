@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdint.h>
+unsigned int flippingBits(unsigned int n){
+   return n ^ 0xFFFFFFFF;//flip and mask to 32 bits
+}
+int main(){
+    int t;
+    scanf("%d", &t); // read the number of queries
+    while(t--){
+        unsigned int n;
+        scanf("%u", &n); //read each 32 bit unsigned integer
+        unsigned int result = flippingBits(n);
+        printf("%u\n",result);
+    }
+}

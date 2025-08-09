@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STRINGS 1000
+#define MAX_LENGTH 21
+
+int main (){
+    int n , q;
+    char strings[MAX_STRINGS][MAX_LENGTH];
+    char queries[MAX_STRINGS][MAX_LENGTH];
+    int result[MAX_STRINGS]={0};
+    
+    //input number of strings
+    scanf("%d", &n);
+    getchar();
+    for(int i =0; i<n; i++){
+        fgets(strings[i],MAX_LENGTH,stdin);
+        strings[i][strcspn(strings[i],"\n")]=0;
+    }
+    //input number of queries
+    scanf("%d", &q);
+    getchar();
+    for(int i =0; i<q; i++){
+       fgets(queries[i],MAX_LENGTH,stdin);
+        queries[i][strcspn(queries[i],"\n")]=0; 
+    }
+    //count occurrences
+    for(int i=0; i<q; i++){
+        for(int j=0; j<n; j++){
+            if(strcmp(queries[i],strings[j])==0){
+                result[i]++;
+            }
+        }
+    }
+    //output for the result
+    for(int i=0; i<q; i++){
+        printf("%d\n", result[i]);
+    }
+    return 0;
+}
