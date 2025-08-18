@@ -1,0 +1,44 @@
+#include <stdio.h>
+int month[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+int isLeap(int y){
+    if(y % 400==0 ||(y%100 !=0 && y%4==0))
+    return 1;
+    return 0;
+}
+int findPrimeDates(int d1,int m1, int y1,int d2,int m2,int y2){
+    int ans=0;
+    while(1){
+        long x=d1 *1000000 +m1*10000+y1;
+        if(x%4==0||x%7==0)
+        ans++;
+        if(d1==d2 && m1==m2 && y1==y2)
+        break;
+        
+        d1++;
+        if(m1==2)
+        month[2]=isLeap(y1)? 29:28;
+        if(d1>month[m1]){
+            d1=1;
+            m1++;
+            if(m1>12){
+                m1=1;
+                y1++;
+            }
+        }
+    }
+   return ans; 
+}
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+   
+   int d1, m1,y1;
+   int d2, m2,y2;
+
+   
+   scanf("%d %d %d",&d1,&m1,&y1);
+   scanf("%d %d %d", &d2,&m2,&y2);
+   
+   printf("%d\n",findPrimeDates(d1,m1,y1,d2,m2,y2));
+    return 0;
+}

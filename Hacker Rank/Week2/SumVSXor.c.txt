@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+long long sumXor( long long n){
+    if(n == 0) return 1;
+     int zeroBits =0;
+     long long temp = n;
+     while (temp>0) {
+     if ((temp & 1LL)==0)
+     zeroBits++;
+     temp >>=1; 
+     }
+     
+     return 1LL << zeroBits;
+}
+int main(){
+    long long n;
+    scanf("%d",&n);
+    printf("%11d\n",sumXor(n));
+    return 0;
+}
